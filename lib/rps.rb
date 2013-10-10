@@ -11,9 +11,8 @@ module RockPaperScissors
       @defeat = {'rock' => 'scissors', 'paper' => 'rock', 'scissors' => 'paper'}
       @throws = @defeat.keys
       @choose = @throws.map { |x| 
-           %Q{    <li><a href="/?choice=#{x}">#{x}</a></li> }
+           %Q{<li><a href="/?choice=#{x}">#{x.capitalize}</a></li>\n}
         }.join("\n")
-      @choose = "<p>\n  <ul>\n#{@choose}\n  </ul>\n</p>"
     end
   
     def call(env)

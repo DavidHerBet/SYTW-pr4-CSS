@@ -1,10 +1,23 @@
 !!!
-%html
+%html{:lang => "en"}
   %head
-    %title RPS with Haml
+    %meta{:charset => "utf-8"}
+    %title RPS with Haml and CSS
+    %link{:href => "/public/css/bootstrap.css", :rel => "stylesheet"}
+    %link{:href => "/public/css/estilos.css", :rel => "stylesheet"}
   %body
-    %h1 Welcome to Rock, Paper, Scissors with Haml
-    %p
-      To start playing clasical Rock, Paper, Scissors game choose a throw:
-      = choose
-    %p= answer.gsub(',', '<br>')
+    %header
+      %nav(class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation")
+        .container
+          %ul.nav.navbar-nav
+            = choose
+    %section.jumbotron
+      .container
+        %h1 Welcome to Rock, Paper, Scissors with Haml
+        %p
+          To start playing clasical Rock, Paper, Scissors game choose a throw (you can select it from the navbar too):
+          = choose
+        %p= answer.gsub(',', '<br>')
+    %footer.container
+      %p.text-center Sistemas y Tecnologías Web - David Hernández Bethencourt
+
