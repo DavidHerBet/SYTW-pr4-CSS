@@ -16,8 +16,22 @@
         %h1 Welcome to Rock, Paper, Scissors with Haml
         %p
           To start playing clasical Rock, Paper, Scissors game choose a throw (you can select it from the navbar too):
-          = choose
-        %p= answer.gsub(',', '<br>')
+        .row.text-center
+          .col-sm-4.col-md-3
+            %a(href="/?choice=rock" class="thumbnail")
+              Rock
+              %img(src="/public/img/piedra.jpg" alt="Rock" height="100px" width="100px" style="display: block;")
+          .col-sm-4.col-md-3
+            %a(href="/?choice=paper" class="thumbnail")
+              Paper
+              %img(src="/public/img/papel.jpg" alt="Paper" height="100px" width="100px" style="display: block;")
+          .col-sm-4.col-md-3
+            %a(href="/?choice=scissors" class="thumbnail")
+              Scissors
+              %img(src="/public/img/tijeras.jpg" alt="Scissors" height="100px" width="100px" style="display: block;")
+        .resultado
+          %p= answer.gsub(',', '<br>')
     %footer.container
-      %p.text-center Sistemas y Tecnologías Web - David Hernández Bethencourt
-
+      %p.text-center Sistems and Web Technologies - David Hernández Bethencourt
+      %p.text-center
+        %a(href="https://github.com/DavidHerBet/SYTW-pr4-CSS")Source code on Github
