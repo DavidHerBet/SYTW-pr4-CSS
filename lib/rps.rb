@@ -32,7 +32,7 @@ module RockPaperScissors
           "\n<b>Result:</b> Ouch; #{computer_throw} beats #{player_throw}. Better luck next time!"
         end
       if !answer.empty?
-        answer.insert(0, "<b>Your choice:</b> #{player_throw}, \n<b>Computer choice:</b> #{computer_throw}, ")
+        answer.insert(0, "<b>Your choice:</b> #{player_throw.capitalize}, \n<b>Computer choice:</b> #{computer_throw.capitalize}, ")
       end
       engine = Haml::Engine.new File.open("views/index.haml").read 
       res = Rack::Response.new
