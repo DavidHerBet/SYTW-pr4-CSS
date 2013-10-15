@@ -7,7 +7,7 @@ gem 'thin'
 gem 'rake'
 
 group :development do
-  gem 'sqlite'
+  gem 'sqlite3-ruby'
 end
 
 group :production do
