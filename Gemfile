@@ -5,3 +5,11 @@ gem 'haml'
 gem 'rack'
 gem 'thin'
 gem 'rake'
+
+group :development do
+  gem 'sqlite'
+end
+
+group :production do
+  gem 'pg'
+end
