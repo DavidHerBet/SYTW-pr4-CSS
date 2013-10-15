@@ -7,9 +7,15 @@ gem 'thin'
 gem 'rake'
 
 group :development do
-  gem 'sqlite3-ruby'
+  gem 'sqlite3'
 end
 
-group :production do
-  gem 'pg'
+group :test do
+  gem 'faker'
+  gem 'rspec'
+end
+
+group :test, :development do 
+  gem 'capybara'
+  gem 'rspec-rails'
 end
