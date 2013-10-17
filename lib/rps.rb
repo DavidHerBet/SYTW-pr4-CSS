@@ -8,38 +8,38 @@ module RockPaperScissors
     def initialize(app = nil)
       @app = app
       @content_type = :html
-      @defeat = {'rock' => 'scissors', 'paper' => 'rock', 'scissors' => 'paper'}
+      @defeat = {:rock => :scissors, :paper => :rock, :scissors => :paper}
       @throws = @defeat.keys
-      @choose = @throws.map { |x| 
-           %Q{<li><a href="/?choice=#{x}">#{x.capitalize}</a></li>\n}
-        }.join("\n")
+      @results = {:win => "You win the match.",
+                  :loose => "You loose, computer wins.",
+                  :tie => "There is a tie."}
     end
-  
+
+    attr_reader :results
+    attr_accessor :computer_throw, :player_throw, :answer
+
     def call(env)
       req = Rack::Request.new(env)
- 
-      req.env.keys.sort.each { |x| puts "#{x} => #{req.env[x]}" }
- 
-      computer_throw = @throws.sample
-      player_throw = req.GET["choice"]
-      answer = if !@throws.include?(player_throw)
+      @computer_throw = @throws.sample
+      @player_throw = req.GET["choice"]
+      @player_throw = player_throw.to_sym if !player_throw.nil?
+      @answer = if !@throws.include?(player_throw)
           ""
         elsif player_throw == computer_throw
-          "\n<b>Result:</b> You tied with the computer"
+          @answer = self.results[:tie]
         elsif computer_throw == @defeat[player_throw]
-          "\n<b>Result:</b> Nicely done; #{player_throw} beats #{computer_throw}"
+          @answer = self.results[:win]
         else
-          "\n<b>Result:</b> Ouch; #{computer_throw} beats #{player_throw}. Better luck next time!"
+          @answer = self.results[:loose]
         end
-      if !answer.empty?
-        answer.insert(0, "<b>Your choice:</b> #{player_throw.capitalize}, \n<b>Computer choice:</b> #{computer_throw.capitalize}, ")
-      end
       engine = Haml::Engine.new File.open("views/index.haml").read 
       res = Rack::Response.new
       res.write engine.render({}, 
-          :answer => answer, 
+          :answer => @answer, 
           :choose => @choose,
-          :throws => @throws)
+          :throws => @throws,
+          :computer_throw => @computer_throw,
+          :player_throw => @player_throw)
       res.finish
     end # call
   end   # App
