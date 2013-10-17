@@ -5,6 +5,8 @@
     %title RPS with Haml and CSS
     %link{:href => "/public/css/bootstrap.css", :rel => "stylesheet"}
     %link{:href => "/public/css/estilos.css", :rel => "stylesheet"}
+    %script{:src => "http://code.jquery.com/jquery.js"}
+    %script{:src => "/public/js/bootstrap.js"}
   %body
     %header
       %nav(class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation")
@@ -13,6 +15,17 @@
             - throws.map do |x| 
               %li
                 %a{:href => "/?choice=#{x.to_s}"} #{x.to_s.capitalize}
+            %li.active
+              %a{:href => "/?choice=reset"} Reset
+            %li.dropdown
+              %a.dropdown-toggle{:href => "#", "data-toggle" => "dropdown"} Games played: #{counter[:games]} <b class="caret"></b>
+              %ul.dropdown-menu
+                %li
+                  %a{:href => "#"}Games won: #{counter[:won]}
+                %li
+                  %a{:href => "#"}Games lost: #{counter[:lost]}
+                %li
+                  %a{:href => "#"}Games tied: #{counter[:ties]}
     %section.jumbotron
       .container
         %h1 Welcome to Rock, Paper, Scissors with Haml
@@ -32,7 +45,7 @@
               Scissors
               %img(src="/public/img/tijeras.jpg" alt="Scissors" height="100px" width="168px" style="display: block;")
         .row.text-center
-          - if !player_throw.nil? then
+          - if !player_throw.nil? and throws.include?(player_throw)
             %hr
             %table
               %tr
