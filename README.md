@@ -8,11 +8,14 @@ La práctica consiste en añadir a la aplicación Rock, Paper, Scissors, de la "
 
 Introducción
 ------------
+<img src="http://altherius.99k.org/materias/paginasweb/css/imagenes/css.jpg" style="text-align: center"></img>
+
 Las hojas de estilo (style sheets) son conjuntos de instrucciones, a veces en forma de archivo anexo, que se asocian a los archivos de texto y se ocupan de los aspectos de formato y de presentación de los contenidos: tipo, fuente y tamaño de letras, alineación y posicionamiento del texto, colores y fondos, etc. Las hojas de estilo permiten liberar la composición del texto de los aspectos visuales y favorecen que se estructure y anote mediante códigos que permiten un tratamiento más eficaz de los contenidos.
 
 Bootstrap
 ---------
 <img src="http://alanchavez.com/wp-content/uploads/2013/09/Twitter-Bootstrap-Logo.jpg" align="center"></img>
+
 Bootstrap es el framework de Twitter que permite crear interfaces web con CSS y Javascript. Hemos empleado este framework para el desarrollo de esta práctica.
 
 Instrucciones
