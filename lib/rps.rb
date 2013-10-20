@@ -1,3 +1,7 @@
+#############################################################
+# Nota: Guarda el contador al usar un servidor web.         #
+#       Si fuese otro servidor tipo Apache, no funcionaría. #
+#############################################################
 require 'rack/request'
 require 'rack/response'
 require 'haml'
@@ -19,6 +23,7 @@ module RockPaperScissors
                   :ties => 0}
     end
 
+    # Getters y setters
     attr_reader :results
     attr_accessor :computer_throw, :player_throw, :answer, :counter
 
